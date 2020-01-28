@@ -6,10 +6,15 @@ from bs4 import BeautifulSoup
 import csv 
 import html5lib
 
-url = 'https://cve.mitre.org/data/downloads/allitems.xml'
+url = 'https://cve.mitre.org/data/downloads/allitems.html'
+
+# define keywords for OT
+keyword = ['PLM Systems', 'MES applications', 'Safety Automation Systems', 
+           'Building Management Systems', 'valves', 'transmitters', 'switches', 'actuators',
+          'PLC','SCADA', 'DCS','CNC','RTU','SMART','embedded','Stuxnet']
 r = requests.get(url) 
 
-soup = BeautifulSoup(r.content, 'html5lib') 
+soup = BeautifulSoup(r.content, 'html.parser') 
 print(soup.prettify()) 
 
   
