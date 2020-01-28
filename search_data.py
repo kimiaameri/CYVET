@@ -8,7 +8,7 @@ import html5lib
 
 url = 'https://cve.mitre.org/data/downloads/allitems.html'
 
-# define keywords for OT
+# define keywords for search OT in CVE
 keyword = ['PLM Systems', 'MES applications', 'Safety Automation Systems', 
            'Building Management Systems', 'valves', 'transmitters', 'switches', 'actuators',
           'PLC','SCADA', 'DCS','CNC','RTU','SMART','embedded','Stuxnet']
@@ -18,15 +18,15 @@ soup = BeautifulSoup(r.content, 'html.parser')
 print(soup.prettify()) 
 
   
-soup = BeautifulSoup(r.content, 'html5lib') 
+#soup = BeautifulSoup(r.content, 'html5lib') 
   
 cveData=[]  # a list to store all required data 
   
-table = soup.find('div', attrs = {'id':'container'}) 
+#table = soup.find('div', attrs = {'id':'GeneratedTable'}) 
   
-for row in table.findAll('div', attrs = {'class':'cveData'}): 
+for row in soup.findAll('div', attrs = {'id':'GeneratedTable'}): 
     cveData = {} 
-    cveData['CVEId'] = row.h5.text 
+    cveData['CVEId'] = row.h2.text 
     cveData['url'] = row.a['href'] 
     cveData['img'] = row.img['src'] 
     cveData['lines'] = row.h6.text 
