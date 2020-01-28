@@ -11,7 +11,16 @@ url = 'https://cve.mitre.org/data/downloads/allitems.html'
 # define keywords for search OT in CVE
 keyword = ['PLM Systems', 'MES applications', 'Safety Automation Systems', 
            'Building Management Systems', 'valves', 'transmitters', 'switches', 'actuators',
-          'PLC','SCADA', 'DCS','CNC','RTU','SMART','embedded','Stuxnet']
+          'PLC','SCADA', 'DCS','CNC','RTU','SMART','embedded','Stuxnet','iLnkP2P']
+#list of tools to attack
+Tools=['Oscilloscope','Logic Analyzer', 'Salae','JTAG','GoodFET', 'BusBlaster', 'BusPirate',
+'JTAGulator', 'JTAGenum', 'Black Magic','Probe','ChipWhisperer','power analysis', 'glitching',
+ 'USB', 'Facedancer','SDR', 'HackRF','P2P']
+# list of attacks to IOT devices
+attacks=['UART','U-Boot','Bruteforce','Xiaomi Vacuum','UART', 'JTAG','denial-of-service','Mirai','DDoS','botnet attacks','TDoS']
+
+#IOT companies
+companies =['HiChip', 'TENVIS', 'SV3C', 'VStarcam', 'Wanscam', 'NEO Coolcam', 'Sricam', 'Eye Sight', 'HVCAM']
 r = requests.get(url) 
 
 soup = BeautifulSoup(r.content, 'html.parser') 
