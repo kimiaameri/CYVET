@@ -17,7 +17,8 @@ Tools=['Oscilloscope','Logic Analyzer', 'Salae','JTAG','GoodFET', 'BusBlaster', 
 'JTAGulator', 'JTAGenum', 'Black Magic','Probe','ChipWhisperer','power analysis', 'glitching',
  'USB', 'Facedancer','SDR', 'HackRF','P2P']
 # list of attacks to IOT devices
-attacks=['UART','U-Boot','Bruteforce','Xiaomi Vacuum','UART', 'JTAG','denial-of-service','Mirai','DDoS','botnet attacks','TDoS']
+attacks=['UART','U-Boot','Bruteforce','Xiaomi Vacuum','UART', 'JTAG','denial-of-service','Mirai',
+         'DDoS','botnet attacks','TDoS']
 
 #IOT companies
 companies =['HiChip', 'TENVIS', 'SV3C', 'VStarcam', 'Wanscam', 'NEO Coolcam', 'Sricam', 'Eye Sight', 'HVCAM']
