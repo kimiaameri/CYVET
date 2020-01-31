@@ -3,7 +3,7 @@ import csv
 from googleapiclient.discovery import build
 #import requests
 
-api_key = "AIzaSyCI-IG_UDbevc5xyWjuZok7vVi5u8gmtNs"
+api_key = ""
 cse_id = "CYVET"
 def google_query(query, api_key, cse_id, **kwargs):
     query_service = build("keysearch", 
