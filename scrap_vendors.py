@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Feb 12 13:09:04 2020
+
+@author: developer
+"""
+
 import nltk
 nltk.download('punkt')
 import nltk.corpus
@@ -32,7 +39,8 @@ for i in range(14):
                   try:
                           soup1 = BeautifulSoup(html_code, 'html.parser')  #Parse html code
                           with open(str(name)+".txt", 'wb') as outfile:
-                              outfile.write(soup1.encode('utf-8'))
+                              #outfile.write(soup1.encode('utf-8'))
+                              outfile.write(html_code)
                   except requests.exceptions.RequestException as e:
                       print(e)
                       pass
@@ -52,7 +60,8 @@ for i in range(14):
                   try:
                           soup1 = BeautifulSoup(html_code, 'html.parser')  #Parse html code
                           with open(str(name)+".txt", 'wb') as outfile:
-                              outfile.write(soup1.encode('utf-8'))
+                              #outfile.write(soup1.encode('utf-8'))
+                              outfile.write(html_code)
                   except requests.exceptions.RequestException as e:
                       print(e)
                       pass
