@@ -31,9 +31,7 @@ for l in range(len(vendor_list)):
         vendor=vendor_list[l][0]
         processed_vendor.add(vendor)
         home_page_url=vendor_list[l][1]
-        #home_url = urlparse(link)
-        #home_page_url= '{uri.scheme}://{uri.netloc}/'.format(uri=home_url)
-        # a queue of urls to be crawled next
+# a queue of urls to be crawled next
         new_urls = deque([home_page_url])
 # a set of urls that we have already processed 
         processed_urls = set()
@@ -51,7 +49,7 @@ for l in range(len(vendor_list)):
             try:    
                 response_link = requests.get(url,headers=headers,timeout=25)
             except(requests.exceptions.MissingSchema, requests.exceptions.ConnectionError, requests.exceptions.InvalidURL, requests.exceptions.InvalidSchema):   
-        # add broken urls to it’s own set, then continue    
+# add broken urls to it’s own set, then continue    
                 broken_urls.add(url)
                 continue
 # extract base url to resolve relative links
@@ -95,20 +93,23 @@ for l in range(len(vendor_list)):
                         filename = os.path.join(folder_location,link['href'].split('/')[-1])
                         with open(filename, 'wb') as f:
                             f.write(requests.get(urljoin(url,link['href']),headers=headers,timeout=25,allow_redirects=True,stream=True).content)
+#--------------------------------------------------------------------------------------------
+#    find products list
+#--------------------------------------------------------------------------------------------
+                    products=[]
+                    for a in soup_i.find_all('a',href=True):
+                            try:
+                                products.append(a.find('h3').text)
+                            except:
+                                pass
+                    df=pd.DataFrame({'Vendor': vendor,'Homepage':home_page_url,'Product Name':products,'Product link':i})
+                    #df.to_csv(vendor+' products.csv',index=False,encoding='utf-8')
+                    df.to_excel(writer,vendor)
+
                 except Exception:
                     pass
             except Exception:
                 pass
     print(l)
+writer.save()
 f.close()
-
-#--------------------------------------------------------------------------------------------
-#    find products
-#--------------------------------------------------------------------------------------------
-products=[]
-for a in soup_i.find_all('a',href=True):
-    product_name=a.find('div',attrs={})
-    products.append(product_name.text)
-df=pd.DataFrame({'Vendor': vendor,'Product Name':products,'Homepage':home_page_url})
-df.to_csv(vendor+' products.csv',index=False,encoding='utf-8')
-          
